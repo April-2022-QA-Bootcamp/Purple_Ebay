@@ -62,6 +62,11 @@ public class CommonFunctions {
 		return driver.getCurrentUrl();
 	}
 	
+	public String getTitle(WebDriver driver) {
+		Loggers.getLog("The Title of the page is : " + driver.getTitle());
+		return driver.getTitle();
+	}
+	
 	public void clear(WebElement element) {
 		try {
 			element.clear();
