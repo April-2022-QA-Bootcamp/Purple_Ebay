@@ -16,6 +16,7 @@ import org.testng.annotations.Parameters;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import purple.ebay.commons.CommonFunctions;
 import purple.ebay.commons.CommonWaits;
+import purple.ebay.objects.CellPhonePage;
 import purple.ebay.utils.Configuration;
 
 public class BaseClass {
@@ -27,6 +28,8 @@ public Configuration configuration = new Configuration(null);
 	
 	protected CommonFunctions commons;
 	CommonWaits waits;
+	
+	protected CellPhonePage cellPhonePage;
 
 	@Parameters("browser")
 	@BeforeMethod
@@ -63,6 +66,7 @@ public Configuration configuration = new Configuration(null);
 	private void initClasses() {
 		waits = new CommonWaits(wait);
 		commons = new CommonFunctions(driver, waits);
+		cellPhonePage = new CellPhonePage(driver, commons);
 	}
 	
 	protected WebDriver getDriver() {
