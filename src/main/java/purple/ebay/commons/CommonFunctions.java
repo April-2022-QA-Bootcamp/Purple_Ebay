@@ -10,17 +10,16 @@ import org.testng.Assert;
 
 import purple.ebay.reporting.Loggers;
 
-
 public class CommonFunctions {
 
 	WebDriver driver;
 	CommonWaits waits;
-	
+
 	public CommonFunctions(WebDriver driver, CommonWaits waits) {
 		this.driver = driver;
 		this.waits = waits;
 	}
-	
+
 	public void inputValues(WebElement element, String value) {
 		try {
 			element.sendKeys(value);
@@ -31,7 +30,7 @@ public class CommonFunctions {
 			Assert.fail();
 		}
 	}
-	
+
 	public void click(WebElement element) {
 		try {
 			waits.waitUntilClickable(element);
@@ -43,7 +42,7 @@ public class CommonFunctions {
 			Assert.fail();
 		}
 	}
-	
+
 	public String getText(WebElement element) {
 		String valueString = null;
 		try {
@@ -56,17 +55,17 @@ public class CommonFunctions {
 		}
 		return valueString;
 	}
-	
+
 	public String getCurrentUrl(WebDriver driver) {
 		Loggers.getLog("Current URL is : " + driver.getCurrentUrl());
 		return driver.getCurrentUrl();
 	}
-	
+
 	public String getTitle(WebDriver driver) {
 		Loggers.getLog("The Title of the page is : " + driver.getTitle());
 		return driver.getTitle();
 	}
-	
+
 	public void clear(WebElement element) {
 		try {
 			element.clear();
@@ -77,18 +76,18 @@ public class CommonFunctions {
 			Assert.fail();
 		}
 	}
-	
+
 	public boolean isPresent(By locator) {
 		List<WebElement> elements = driver.findElements(locator);
-		if(elements.size() != 0) {
+		if (elements.size() != 0) {
 			Loggers.getLog(elements + " --- > This element is present and has match of : " + elements.size());
 			return true;
-		}else {
+		} else {
 			Loggers.getLog(elements + " --- > This element is NOT present and no match found : " + elements.size());
 			return false;
 		}
 	}
-	
+
 	public void selectDropdown(WebElement element, String value) {
 		try {
 			Select select = new Select(element);
@@ -100,7 +99,7 @@ public class CommonFunctions {
 			Assert.fail();
 		}
 	}
-	
+
 	public boolean buttonEnabled(WebElement element) {
 		boolean button = false;
 		try {
@@ -112,8 +111,8 @@ public class CommonFunctions {
 			Assert.fail();
 		}
 		return button;
-		}
-	
+	}
+
 	public boolean isDisplayed(WebElement element) {
 		boolean logo = false;
 		try {
@@ -126,7 +125,7 @@ public class CommonFunctions {
 		}
 		return logo;
 	}
-	
+
 	public void failText() {
 		Loggers.getLog(getClass().getMethods()[0].getName() + " ---> has failed");
 		Assert.fail();

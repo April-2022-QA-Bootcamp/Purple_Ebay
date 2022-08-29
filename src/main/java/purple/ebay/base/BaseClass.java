@@ -12,24 +12,25 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import purple.ebay.commons.CommonFunctions;
 import purple.ebay.commons.CommonWaits;
+import purple.ebay.objects.BrandAndOutletPage;
 import purple.ebay.objects.CellPhonePage;
 import purple.ebay.utils.Configuration;
 
 public class BaseClass {
 
-public Configuration configuration = new Configuration(null);
-	
+	public Configuration configuration = new Configuration(null);
+
 	WebDriver driver;
 	WebDriverWait wait;
-	
+
 	protected CommonFunctions commons;
 	CommonWaits waits;
-	
+
 	protected CellPhonePage cellPhonePage;
+	protected BrandAndOutletPage brandAndOutletPage;
 
 	@Parameters("browser")
 	@BeforeMethod
@@ -37,42 +38,46 @@ public Configuration configuration = new Configuration(null);
 		driver = localDriver(browser1);
 		driver.manage().window().maximize();
 		driver.get(configuration.getConfiguration("url"));
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(configuration.getConfiguration("pageloadWait"))));
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.parseInt(configuration.getConfiguration("implicitWait"))));
-		wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(configuration.getConfiguration("explicitWait"))));
+		driver.manage().timeouts()
+				.pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(configuration.getConfiguration("pageloadWait"))));
+		driver.manage().timeouts()
+				.implicitlyWait(Duration.ofSeconds(Integer.parseInt(configuration.getConfiguration("implicitWait"))));
+		wait = new WebDriverWait(driver,
+				Duration.ofSeconds(Integer.parseInt(configuration.getConfiguration("explicitWait"))));
 		initClasses();
 	}
-	
+
 	private WebDriver localDriver(String browserName) {
-		if(browserName.equalsIgnoreCase("chrome")) {
+		if (browserName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-		}else if(browserName.equalsIgnoreCase("edge")) {
+		} else if (browserName.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
-		}else if(browserName.equalsIgnoreCase("firefox")) {
+		} else if (browserName.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
-		}else if(browserName.equalsIgnoreCase("safari")) {
+		} else if (browserName.equalsIgnoreCase("safari")) {
 			WebDriverManager.safaridriver().setup();
 			driver = new SafariDriver();
-		}else {
+		} else {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		}
 		return driver;
 	}
-	
+
 	private void initClasses() {
 		waits = new CommonWaits(wait);
 		commons = new CommonFunctions(driver, waits);
 		cellPhonePage = new CellPhonePage(driver, commons);
+		brandAndOutletPage = new BrandAndOutletPage(driver, commons);
 	}
-	
+
 	protected WebDriver getDriver() {
 		return driver;
 	}
-	
+
 	@AfterMethod
 	public void terminate() {
 		driver.quit();
