@@ -16,8 +16,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import purple.ebay.commons.CommonFunctions;
 import purple.ebay.commons.CommonWaits;
 import purple.ebay.objects.HomePage;
+import purple.ebay.objects.RegisterAccountPage;
 import purple.ebay.objects.BrandAndOutletPage;
 import purple.ebay.objects.CellPhonePage;
+import purple.ebay.objects.DailyDealPage;
+import purple.ebay.objects.HelpPage;
 import purple.ebay.utils.Configuration;
 
 public class BaseClass {
@@ -30,9 +33,11 @@ public class BaseClass {
 	protected CommonFunctions commons;
 	CommonWaits waits;
 	protected HomePage homePage;
-  protected CellPhonePage cellPhonePage;
+	protected CellPhonePage cellPhonePage;
 	protected BrandAndOutletPage brandAndOutletPage;
-
+	protected DailyDealPage dealPage;
+	protected HelpPage helpPage;
+	protected RegisterAccountPage registerPage;
 
 	@Parameters("browser")
 	@BeforeMethod
@@ -72,9 +77,12 @@ public class BaseClass {
 	private void initClasses() {
 		waits = new CommonWaits(wait);
 		commons = new CommonFunctions(driver, waits);
-    homePage= new HomePage(driver, commons);
-    cellPhonePage = new CellPhonePage(driver, commons);
+		homePage = new HomePage(driver, commons);
+		cellPhonePage = new CellPhonePage(driver, commons);
 		brandAndOutletPage = new BrandAndOutletPage(driver, commons);
+		dealPage = new DailyDealPage(driver, commons);
+		helpPage = new HelpPage(driver, commons);
+		registerPage = new RegisterAccountPage(driver, commons);
 
 	}
 
