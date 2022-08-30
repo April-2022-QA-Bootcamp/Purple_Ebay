@@ -18,6 +18,11 @@ public class HomePage {
 		this.commons = commons;
 	}
 
+	
+	
+	@FindBy(xpath = "//a[contains(text(),'Daily Deals')]")
+	WebElement dailyDealsElement;
+	
 	// su1
 	@FindBy(xpath = ("//button[contains(text(),'Shop by category')]"))
 	WebElement shopByBtnWebElement;
@@ -56,6 +61,15 @@ public class HomePage {
 	private void clickingHelpAndContact() {
 		commons.click(helpAndContactElement);
 	}
+  
+  	private void clickDailyDeal() {
+		commons.click(dailyDealsElement);
+		
+	}
+	
+	public void HomePageDealsStep() {	
+		clickDailyDeal();
+	}
 
 	// su5
 	public void homepageShopByCategory(String expectedSubTitle) {
@@ -74,5 +88,6 @@ public class HomePage {
 		verifyHelpAndContact();
 		clickingHelpAndContact();
 	}
+
 
 }
