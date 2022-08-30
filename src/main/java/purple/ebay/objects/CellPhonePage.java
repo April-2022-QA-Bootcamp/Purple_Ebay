@@ -1,12 +1,10 @@
 package purple.ebay.objects;
 
 import static org.testng.Assert.assertEquals;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import purple.ebay.commons.CommonFunctions;
 
 public class CellPhonePage {
@@ -41,9 +39,8 @@ public class CellPhonePage {
 		assertEquals(commons.getCurrentUrl(driver), expectedUrl);
 	}
 
-	//Please add here parameter String expected, asserts and where needed
-	private void getTitle() {
-		commons.getTitle(driver);
+	private void getTitle(String expectedTitle) {
+		assertEquals(commons.getTitle(driver), expectedTitle);
 	}
 
 	private void getPageHeader(String expectedPageHeader) {
@@ -60,7 +57,6 @@ public class CellPhonePage {
 
 	private void getTextBybrandShop(String expectedTextOfByBrandShop) {
 		assertEquals(commons.getText(textOfByBrandShopElement), expectedTextOfByBrandShop);
-
 	}
 
 	private void getUcellPhoneText(String expectedUcellPhoneText) {
@@ -75,10 +71,10 @@ public class CellPhonePage {
 		commons.isDisplayed(limitedTimeDealWebElement);
 	}
 
-	public void cellPage(String expectedUrl, String expectedPageHeader, String expectedTextOfByBrandShop,
-			String expectedUcellPhoneText) {
+	public void cellPage(String expectedUrl, String expectedTitle, String expectedPageHeader,
+			String expectedTextOfByBrandShop, String expectedUcellPhoneText) {
 		getCurrentUrlCpPage(expectedUrl);
-		getTitle();
+		getTitle(expectedTitle);
 		getPageHeader(expectedPageHeader);
 		isEbayLogoDisplayed();
 		isClickableNotificationBtn();
@@ -87,8 +83,5 @@ public class CellPhonePage {
 		getUcellPhoneText(expectedUcellPhoneText);
 		isLimitedTimeDealDisplayed();
 	}
-//	expected result
-//	("https://www.ebay.com/b/Cell-Phones-Smart-Watches-Accessories/15032/bn_1865441",
-//			"Cell Phones, Smart Watches & Accessories", "Shop by Brand", "Unlocked Cell Phones")
-
+	
 }
