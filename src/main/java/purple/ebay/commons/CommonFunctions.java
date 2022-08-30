@@ -130,4 +130,17 @@ public class CommonFunctions {
 		Loggers.getLog(getClass().getMethods()[0].getName() + " ---> has failed");
 		Assert.fail();
 	}
+	
+	public boolean isSeleceted(WebElement element) {
+		boolean checkBox = false;
+		try {
+			checkBox = element.isEnabled();
+			Loggers.getLog(element + " ---> This checkBox is selected : " + checkBox);
+		} catch (NullPointerException | NoSuchElementException e) {
+			e.printStackTrace();
+			Loggers.getLog(element + " : This element Not Found");
+			Assert.fail();
+		}
+		return checkBox; 
+	}
 }

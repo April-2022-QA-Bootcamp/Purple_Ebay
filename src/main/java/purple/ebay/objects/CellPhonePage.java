@@ -40,41 +40,41 @@ public class CellPhonePage {
 	private void getCurrentUrlCpPage(String expectedUrl) {
 		assertEquals(commons.getCurrentUrl(driver), expectedUrl);
 	}
-	
+
+	//Please add here parameter String expected, asserts and where needed
 	private void getTitle() {
 		commons.getTitle(driver);
 	}
-	
+
 	private void getPageHeader(String expectedPageHeader) {
 		assertEquals(commons.getText(pageHeaderWebElement), expectedPageHeader);
 	}
-	
+
 	private void isEbayLogoDisplayed() {
 		commons.isDisplayed(ebayLogoElement);
-		}
-	
+	}
+
 	private void isClickableNotificationBtn() {
 		commons.buttonEnabled(notificationBtnElement);
 	}
-	
+
 	private void getTextBybrandShop(String expectedTextOfByBrandShop) {
 		assertEquals(commons.getText(textOfByBrandShopElement), expectedTextOfByBrandShop);
-		
+
 	}
-	
+
 	private void getUcellPhoneText(String expectedUcellPhoneText) {
-		assertEquals(commons.getText(uCellPhoneWebElement), expectedUcellPhoneText);	
+		assertEquals(commons.getText(uCellPhoneWebElement), expectedUcellPhoneText);
 	}
-	
+
 	private void isUcellPhoneEnabled() {
 		commons.buttonEnabled(uCellPhoneWebElement);
-		}
-	
+	}
+
 	private void isLimitedTimeDealDisplayed() {
 		commons.isDisplayed(limitedTimeDealWebElement);
 	}
-	
-	
+
 	public void cellPage(String expectedUrl, String expectedPageHeader, String expectedTextOfByBrandShop,
 			String expectedUcellPhoneText) {
 		getCurrentUrlCpPage(expectedUrl);
@@ -82,7 +82,7 @@ public class CellPhonePage {
 		getPageHeader(expectedPageHeader);
 		isEbayLogoDisplayed();
 		isClickableNotificationBtn();
-		getTextBybrandShop(expectedTextOfByBrandShop);	
+		getTextBybrandShop(expectedTextOfByBrandShop);
 		isUcellPhoneEnabled();
 		getUcellPhoneText(expectedUcellPhoneText);
 		isLimitedTimeDealDisplayed();

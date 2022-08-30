@@ -18,11 +18,12 @@ public class HomePage {
 		this.commons = commons;
 	}
 
-	
-	
+	@FindBy(css = "img#gh-logo")
+	WebElement logoElement;
+
 	@FindBy(xpath = "//a[contains(text(),'Daily Deals')]")
 	WebElement dailyDealsElement;
-	
+
 	// su1
 	@FindBy(xpath = ("//button[contains(text(),'Shop by category')]"))
 	WebElement shopByBtnWebElement;
@@ -35,6 +36,9 @@ public class HomePage {
 
 	@FindBy(xpath = "//a[contains(text(),'Help & Contact') and @class='gh-p']")
 	WebElement helpAndContactElement;
+
+	@FindBy(xpath = "//a[text()='register']")
+	WebElement registerElement;
 
 	// su3
 	private void clickShopByCategoryBtn() {
@@ -61,13 +65,21 @@ public class HomePage {
 	private void clickingHelpAndContact() {
 		commons.click(helpAndContactElement);
 	}
-  
-  	private void clickDailyDeal() {
+
+	private void clickDailyDeal() {
 		commons.click(dailyDealsElement);
-		
+
 	}
 	
-	public void HomePageDealsStep() {	
+	private void verifyLogo() {
+		commons.isDisplayed(logoElement);
+	}
+
+	private void clickRegister() {
+		commons.click(registerElement);
+	}
+
+	public void HomePageDealsStep() {
 		clickDailyDeal();
 	}
 
@@ -88,6 +100,10 @@ public class HomePage {
 		verifyHelpAndContact();
 		clickingHelpAndContact();
 	}
-
+	
+	public void homePageRegisterStep() {
+		verifyLogo();
+		clickRegister();
+	} 
 
 }
