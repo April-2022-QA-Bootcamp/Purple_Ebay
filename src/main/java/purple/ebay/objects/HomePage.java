@@ -80,7 +80,8 @@ public class HomePage {
 		clickDailyDeal();
 	}
 
-	public void homepageShopByCategory() {
+  //su5
+  public void homepageShopByCategory() {
 		clickShopByCategoryBtn();
 		clickCellBtn();
 	}
