@@ -24,10 +24,9 @@ public class HomePage {
 	@FindBy(xpath = "//a[contains(text(),'Daily Deals')]")
 	WebElement dailyDealsElement;
 
-	// su1
 	@FindBy(xpath = ("//button[contains(text(),'Shop by category')]"))
 	WebElement shopByBtnWebElement;
-	// su2
+
 	@FindBy(xpath = ("//a[contains(text(),'Cell Phones, Smart Watches & Accessories')]"))
 	WebElement cellBtnWebElement;
 
@@ -40,12 +39,10 @@ public class HomePage {
 	@FindBy(xpath = "//a[text()='register']")
 	WebElement registerElement;
 
-	// su3
 	private void clickShopByCategoryBtn() {
 		commons.click(shopByBtnWebElement);
 	}
 
-	// su4
 	private void clickCellBtn() {
 		commons.click(cellBtnWebElement);
 	}
@@ -70,7 +67,7 @@ public class HomePage {
 		commons.click(dailyDealsElement);
 
 	}
-	
+
 	private void verifyLogo() {
 		commons.isDisplayed(logoElement);
 	}
@@ -85,25 +82,27 @@ public class HomePage {
 
 	// su5
 	public void homepageShopByCategory() {
+
+  //su5
+  public void homepageShopByCategory() {
+
 		clickShopByCategoryBtn();
 		clickCellBtn();
-
 	}
 
 	public void homepageBrandSteps() {
 		verifyBrandandOutlet();
 		clickBrandAndOutlet();
-
 	}
 
 	public void homepageHelpSteps() {
 		verifyHelpAndContact();
 		clickingHelpAndContact();
 	}
-	
+
 	public void homePageRegisterStep() {
 		verifyLogo();
 		clickRegister();
-	} 
+	}
 
 }
