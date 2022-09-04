@@ -95,7 +95,7 @@ public class HelpPage {
 		assertEquals(commons.getCurrentUrl(driver), expectedUrl);
 	}
 
-	public void HelpPageSteps(String expectedHeader, String value, String expectedArticle, String expectedArticle2,
+	public void helpPageSteps(String expectedHeader, String value, String expectedArticle, String expectedArticle2,
 			String expectedUrl) {
 		verifyLogo();
 		verifyHeaderTitle(expectedHeader);
@@ -105,9 +105,9 @@ public class HelpPage {
 		clickSettingAccount();
 		clickSigningUpAccount();
 		verifyArticle2Title(expectedArticle2);
+		verifyCurruntUrl(expectedUrl);
 		verifySignUpButton();
 		clickSignUpButton();
-		verifyCurruntUrl(expectedUrl);
 
 	}
 

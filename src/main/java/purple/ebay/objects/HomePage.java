@@ -79,12 +79,12 @@ public class HomePage {
 		commons.click(registerElement);
 	}
 
-	public void HomePageDealsStep() {
+	public void homePageDealsStep() {
 		clickDailyDeal();
 	}
 
 	// su5
-	public void homepageShopByCategory(String expectedSubTitle) {
+	public void homepageShopByCategory() {
 		clickShopByCategoryBtn();
 		clickCellBtn();
 
