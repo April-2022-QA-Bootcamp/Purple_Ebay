@@ -1,12 +1,19 @@
 package purple.ebay.commons;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import com.google.common.io.Files;
 
 import purple.ebay.reporting.Loggers;
 
@@ -142,5 +149,22 @@ public class CommonFunctions {
 			Assert.fail();
 		}
 		return checkBox; 
+	}
+	
+	public String getScreenshot(String testName) {
+		Date date = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("MMddyyyy_hh.mm.ss");
+		String extension = format.format(date);
+		File file = new File("screenShots/" + testName + "_" + extension + ".png");
+		TakesScreenshot ss = (TakesScreenshot)driver;
+		File outPutFile = ss.getScreenshotAs(OutputType.FILE);
+		try {
+			Files.copy(outPutFile, file.getAbsoluteFile());
+			Loggers.getLog("Test has been failed \nScreenshot taken here ---> " + file.getAbsolutePath());
+		} catch (Exception e) {
+			e.printStackTrace();
+			Loggers.getLog("Error while taking screenshot");
+		}
+		return file.getAbsolutePath();
 	}
 }
