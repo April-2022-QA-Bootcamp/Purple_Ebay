@@ -40,22 +40,6 @@ public class BrandAndOutletPage {
 	@FindBy(xpath = "//div[@class='title-banner__right-image']")
 	WebElement imageAtRightElement;
 
-	/*
-	 * @FindBy(xpath =
-	 * "//h3[text()='ROLEX 18kt Rose Gold Daytona Leather Strap Black Rose Panda 116515 SANT BLANC']"
-	 * ) WebElement choose18ktRolexElement;
-	 * 
-	 * @FindBy(css = "a#binBtn_btn") WebElement buyItNowElement;
-	 * 
-	 * @FindBy(tagName = "h1") WebElement headerElement;
-	 * 
-	 * @FindBy(css = "input#userid") WebElement inputEmailElement;
-	 * 
-	 * @FindBy(name = "signin-continue-btn") WebElement continuElement;
-	 * 
-	 * @FindBy(xpath = "//p[@id='errormsg']") WebElement errorMsgElement;
-	 */
-
 	private void pageTitle(String expectedTitle) {
 		assertEquals(commons.getTitle(driver), expectedTitle);
 	}
@@ -87,34 +71,6 @@ public class BrandAndOutletPage {
 	private void verifyCurrentUrl(String expectedUrl) {
 		assertEquals(commons.getCurrentUrl(driver), expectedUrl);
 	}
-
-	/*
-	 * private void clickAt18kRolex() { JavascriptExecutor jsExecutor =
-	 * (JavascriptExecutor) driver;
-	 * jsExecutor.executeScript("arguments[0].scrollIntoView(true);",
-	 * choose18ktRolexElement); commons.click(choose18ktRolexElement); }
-	 * 
-	 * private void clickingBuyItNow() { JavascriptExecutor jsExecutor =
-	 * (JavascriptExecutor) driver;
-	 * jsExecutor.executeScript("arguments[0].scrollIntoView(true);",
-	 * buyItNowElement); commons.click(buyItNowElement); }
-	 * 
-	 * private void verifyHeader(String expectedHeader) {
-	 * assertEquals(commons.getText(headerElement), expectedHeader); }
-	 * 
-	 * private void typeEmail(String value) { commons.inputValues(inputEmailElement,
-	 * value); }
-	 * 
-	 * private void verifyContinue() { commons.buttonEnabled(continuElement); }
-	 * 
-	 * private void clickAtContinue() { commons.click(continuElement); }
-	 * 
-	 * private void verifyErrorMsg(String expectedMsg) {
-	 * assertEquals(commons.getText(errorMsgElement), expectedMsg); }
-	 * 
-	 * private void verifyCurrentUrl(String expectedUrl) {
-	 * assertEquals(commons.getCurrentUrl(driver), expectedUrl); }
-	 */
 
 	public void brandOuletSteps(String expectedTitle, String expectedText, String expectedUrl) {
 
