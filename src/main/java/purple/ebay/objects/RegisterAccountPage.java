@@ -2,12 +2,16 @@ package purple.ebay.objects;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import purple.ebay.commons.CommonFunctions;
+import purple.ebay.utils.RegisterData;
+import static purple.ebay.utils.RegisterDataMap.*;
 
 public class RegisterAccountPage {
 
@@ -94,5 +98,31 @@ public class RegisterAccountPage {
 		verifyEmailErrorTxt(expectedError);
 
 	}
+	
+	public void registerPersonalAccStepsWithFailEmail(RegisterData registerData) {
+		verifyPageTitle(registerData.getExpectedTitle());
+		verifyHeaderTxt(registerData.getExpectedText1());
+		verifyPersonalCheckBoxSelected();
+		inputFirstName(registerData.getFirstName());
+		inputLastName(registerData.getLastName());
+		inputEmail(registerData.getEmail());
+		inputPassword(registerData.getPassword());
+		isCreateAccButtonEnabled();
+		verifyEmailErrorTxt(registerData.getExpectedError());
+	}
+	
+	public void registerPersonalAccStepsWithFailEmail(Map<String , String> map) {
+		verifyPageTitle(map.get(Title.name()));
+		verifyHeaderTxt(map.get(Text.getValue()));
+		verifyPersonalCheckBoxSelected();
+		inputFirstName(map.get(FirstName.getValue()));
+		inputLastName(map.get(LastName.getValue()));
+		inputEmail(map.get(Email.name()));
+		inputPassword(map.get(Password.name()));
+		isCreateAccButtonEnabled();
+		verifyEmailErrorTxt(map.get(Error.getValue()));
+	}
+	
+	
 
 }
